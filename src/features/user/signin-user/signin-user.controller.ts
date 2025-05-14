@@ -26,7 +26,5 @@ export class SignInUserController {
     });
     res.json({ message: 'Login successful', user });
 
-    
   }
-
 }

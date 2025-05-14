@@ -8,7 +8,7 @@ export class VerifyTokenHandler implements IQueryHandler<VerifyTokenQuery> {
   constructor(private readonly userRepository: UserRepository) {}
 
   async execute(query: VerifyTokenQuery) {
-console.log('✌️query --->', query);
+    console.log('✌️query --->', query);
     const user = await this.userRepository.findOne({
       where: {
         id: query.id,
