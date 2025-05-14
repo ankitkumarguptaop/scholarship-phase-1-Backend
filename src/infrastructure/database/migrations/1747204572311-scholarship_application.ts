@@ -15,7 +15,9 @@ export class ScholarshipApplication1747204572311 implements MigrationInterface {
                   {
                     name: 'uuid',
                     type: 'uuid',
+                    isPrimary: true,
                     isNullable: false,
+                    isUnique: true,
                   },
                   {
                     name: 'token',
@@ -50,6 +52,8 @@ export class ScholarshipApplication1747204572311 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+         await queryRunner.dropTable('scholarship_application');
+
     }
 
 }

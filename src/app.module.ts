@@ -12,6 +12,7 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { RabbitmqModule } from './infrastructure/message-bus/rabbitmq/config/rabbitmq.module';
 import { VerifyTokenModule } from './features/verify-token/verify-token.module';
 import { CreateScholarShipApplicationModule } from './features/create-scholarship-application/create-scholarship-application.module';
+import { CreatePersonalDetailModule } from './features/create-personal-details/create-personal-details.module';
 
 @Module({
   imports: [
@@ -25,7 +26,8 @@ import { CreateScholarShipApplicationModule } from './features/create-scholarshi
     VerifyTokenModule,
     CqrsModule,
     RabbitmqModule,
-    CreateScholarShipApplicationModule
+    CreateScholarShipApplicationModule,
+    CreatePersonalDetailModule
   ],
   controllers: [AppController],
   providers: [AppService],

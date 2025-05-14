@@ -16,7 +16,7 @@ export const dataSourceOptions = (
   username: 'postgres',
   password: 'Ankit@1234',
   database: 'scholarship',
-  host: 'database', // localhost
+  host: 'localhost', // localhost
   port: 5432, //db port
   entities: ['dist/src/domain/**/*.entity.js'],
   synchronize: false, // this is
@@ -25,14 +25,6 @@ export const dataSourceOptions = (
   logging: true,
 });
 // export const dataSource = new DataSource(dataSourceOptions(new ConfigService()),)
-// dataSource.initialize()
-//     .then(() => {
-
-//         console.log("Data Source has been initialized!")
-//     })
-//     .catch((err) => {
-//         console.error("Error during Data Source initialization", err)
-//     })
 
 export const dataSource = (() => {
   if (!dataSourceInstance) {
@@ -41,6 +33,16 @@ export const dataSource = (() => {
   }
   return dataSourceInstance;
 })();
+
+
+dataSource.initialize()
+    .then(() => {
+
+        console.log("Data Source has been initialized!")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization", err)
+    })
 
 // import { DataSource, DataSourceOptions } from 'typeorm';
 // import { SeederOptions } from 'typeorm-extension';
