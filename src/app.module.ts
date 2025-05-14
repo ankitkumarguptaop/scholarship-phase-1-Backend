@@ -2,19 +2,16 @@ import {
   MiddlewareConsumer,
   Module,
   NestModule,
-  RequestMethod,
 } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from 'ormconfig';
-import { AuthenticationMiddleware } from './infrastructure/middlewares/auth.middleware';
 import { CqrsModule } from '@nestjs/cqrs';
-import { CreateUserModule } from './features/user/create-user/create-user.module';
-import { SignInUserModule } from './features/user/signin-user/signin-user.module';
 import { RabbitmqModule } from './infrastructure/message-bus/rabbitmq/config/rabbitmq.module';
-import { VerifyTokenModule } from './features/user/verify-token/verify-token.module';
+import { VerifyTokenModule } from './features/verify-token/verify-token.module';
+import { CreateScholarShipApplicationModule } from './features/create-scholarship-application/create-scholarship-application.module';
 
 @Module({
   imports: [
@@ -25,23 +22,22 @@ import { VerifyTokenModule } from './features/user/verify-token/verify-token.mod
         dataSourceOptions(configService),
       inject: [ConfigService],
     }),
-    CreateUserModule,
     VerifyTokenModule,
-    SignInUserModule,
     CqrsModule,
-    RabbitmqModule
+    RabbitmqModule,
+    CreateScholarShipApplicationModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(AuthenticationMiddleware)
-      .exclude(
-        { path: 'users/signin', method: RequestMethod.POST },
-        { path: 'users/signup', method: RequestMethod.POST },
-      )
-      .forRoutes('*');
+    // consumer
+    //   .apply(AuthenticationMiddleware)
+    //   .exclude(
+    //     { path: 'users/signin', method: RequestMethod.POST },
+    //     { path: 'users/signup', method: RequestMethod.POST },
+    //   )
+    //   .forRoutes('*');
   }
 }

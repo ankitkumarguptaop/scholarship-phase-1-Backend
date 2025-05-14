@@ -8,9 +8,6 @@ export class SendMailHandler {
 
   async handle(command: SendMailCommand) {
     const { email, access_token } = command;
-console.log('✌️command --->', command);
-
-console.log('✌️access_token --->', access_token);
 
     try {
       const transporter = nodemailer.createTransport({
@@ -26,6 +23,7 @@ console.log('✌️access_token --->', access_token);
       const html = `
         <div>
           <h1>Your access token</h1>
+          </br>
           <p>Your access token: <strong>${access_token}</strong></p>
         </div>
       `;
@@ -33,7 +31,7 @@ console.log('✌️access_token --->', access_token);
       var mailOptions = {
         from: 'ankitkumarguptademo@gmail.com',
         to: email,
-        subject: 'Ticket are confirm',
+        subject: 'Welcome to the Scholarship application process',
         html: html,
       };
 

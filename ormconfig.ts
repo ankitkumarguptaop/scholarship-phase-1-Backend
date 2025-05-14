@@ -25,7 +25,6 @@ export const dataSourceOptions = (
   logging: true,
 });
 // export const dataSource = new DataSource(dataSourceOptions(new ConfigService()),)
-
 // dataSource.initialize()
 //     .then(() => {
 

@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { CqrsModule } from '@nestjs/cqrs';
 import { VerifyTokenController } from './verify-token.controller';
-import { UserRepository } from 'src/infrastructure/repositories/user/user.repository';
 import { VerifyTokenHandler } from './verify-token.handler';
+import { ScholarshipApplicationRepository } from 'src/infrastructure/repositories/scholarship-appication/scholarship-application.repository';
 
 
 @Module({
   imports: [CqrsModule],
   controllers: [VerifyTokenController],
   providers: [
-    UserRepository,
+    ScholarshipApplicationRepository,
     VerifyTokenHandler,
   ],
 })

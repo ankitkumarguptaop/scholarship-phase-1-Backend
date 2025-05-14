@@ -6,7 +6,7 @@ import {
 } from 'http-problem-details';
 import { ErrorMapper } from 'http-problem-details-mapper';
 import { BadRequest, DtoValidation, NotFound } from './exceptions';
-import { UserEmailAlreadyExistsConflict } from 'src/domain/user/exceptions/exception';
+import { ScholarshipApplicationAlreadyExistsConflict } from 'src/domain/scholarship-application/exceptions/exception';
 
 class ConflictMapper {
   static mapError(error: Error): ProblemDocument {
@@ -28,14 +28,20 @@ class NotFoundMapper {
   }
 }
 
-export class UserEmailAlreadyExistsConflictMapper extends ErrorMapper {
+
+
+
+export class ScholarshipApplicationAlreadyExistsConflictMapper extends ErrorMapper {
   constructor() {
-    super(UserEmailAlreadyExistsConflict);
+    super(ScholarshipApplicationAlreadyExistsConflict);
   }
   mapError(error: Error): ProblemDocument {
     return ConflictMapper.mapError(error);
   }
 }
+
+
+
 
 //NOT FOUND
 export class NotFoundExceptionMapper extends ErrorMapper {
