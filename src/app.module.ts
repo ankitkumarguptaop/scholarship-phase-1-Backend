@@ -11,10 +11,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from 'ormconfig';
 import { AuthenticationMiddleware } from './infrastructure/middlewares/auth.middleware';
 import { CqrsModule } from '@nestjs/cqrs';
-import { CreateProductModule } from './features/product/create-product/create-product.module';
 import { CreateUserModule } from './features/user/create-user/create-user.module';
-import { GetProductModule } from './features/product/get-product/get-product.module';
-import { ListProductModule } from './features/product/list-product/list-product.module';
 import { SignInUserModule } from './features/user/signin-user/signin-user.module';
 import { RabbitmqModule } from './infrastructure/message-bus/rabbitmq/config/rabbitmq.module';
 import { VerifyTokenModule } from './features/user/verify-token/verify-token.module';
@@ -28,10 +25,7 @@ import { VerifyTokenModule } from './features/user/verify-token/verify-token.mod
         dataSourceOptions(configService),
       inject: [ConfigService],
     }),
-    CreateProductModule,
     CreateUserModule,
-    GetProductModule,
-    ListProductModule,
     VerifyTokenModule,
     SignInUserModule,
     CqrsModule,

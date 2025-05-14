@@ -17,8 +17,8 @@ export const dataSourceOptions = (
     username: 'postgres',
     password: 'Ankit@1234',
     database: 'scholarship',
-    host:   'localhost'  ,//,'database',
-    port: 5432, //db port 
+    host:   'database', // localhost
+    port: 5432, //db port  
     entities: ["dist/src/domain/**/*.entity.js"],
     synchronize: false, // this is 
     migrationsTableName: 'custom_migration_table', 
