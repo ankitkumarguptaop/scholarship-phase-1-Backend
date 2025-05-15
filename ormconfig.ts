@@ -16,7 +16,7 @@ export const dataSourceOptions = (
   username: 'postgres',
   password: 'Ankit@1234',
   database: 'scholarship',
-  host: 'localhost', // localhost
+  host: 'database', // localhost
   port: 5432, //db port
   entities: ['dist/src/domain/**/*.entity.js'],
   synchronize: false, // this is

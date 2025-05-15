@@ -13,6 +13,7 @@ import { RabbitmqModule } from './infrastructure/message-bus/rabbitmq/config/rab
 import { VerifyTokenModule } from './features/verify-token/verify-token.module';
 import { CreateScholarShipApplicationModule } from './features/create-scholarship-application/create-scholarship-application.module';
 import { CreatePersonalDetailModule } from './features/create-personal-details/create-personal-details.module';
+import { GetPersonalDetailModule } from './features/get-personal-details/get-personal-details.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { CreatePersonalDetailModule } from './features/create-personal-details/c
     CqrsModule,
     RabbitmqModule,
     CreateScholarShipApplicationModule,
-    CreatePersonalDetailModule
+    CreatePersonalDetailModule,
+    GetPersonalDetailModule
   ],
   controllers: [AppController],
   providers: [AppService],

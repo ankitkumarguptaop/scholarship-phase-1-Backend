@@ -5,14 +5,18 @@ import { DataSource, Repository } from 'typeorm';
 
 @Injectable()
 export class PersonalDetailsRepository extends Repository<PersonalInformation> {
-  constructor(dataSource: DataSource ,   private configService: ConfigService,) {
-    super(PersonalInformation, dataSource.createEntityManager()); 
+  constructor(
+    dataSource: DataSource,
+    private configService: ConfigService,
+  ) {
+    super(PersonalInformation, dataSource.createEntityManager());
   }
-  
+
   createPersonalDetails(
     details: Partial<PersonalInformation>,
   ): Promise<PersonalInformation> {
     return this.save(details);
   }
-  
+
+ 
 }

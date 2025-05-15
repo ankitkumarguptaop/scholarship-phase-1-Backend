@@ -1,5 +1,19 @@
-import { IsEnum, IsOptional, IsString, MaxLength, IsNumber, IsDateString, IsBoolean, Min, Max } from 'class-validator';
-import { DocumentType, FinancialDependency, MaritalStatus } from 'src/domain/personal-details/personal-detail.entity';
+import {
+  IsEnum,
+  IsOptional,
+  IsString,
+  MaxLength,
+  IsNumber,
+  IsDateString,
+  IsBoolean,
+  Min,
+  Max,
+} from 'class-validator';
+import {
+  DocumentType,
+  FinancialDependency,
+  MaritalStatus,
+} from 'src/domain/personal-details/personal-detail.entity';
 
 export class CreatePersonalDetailDto {
   @IsEnum(DocumentType)
@@ -13,12 +27,21 @@ export class CreatePersonalDetailDto {
   marital_status: MaritalStatus;
 
   @IsString()
+  application_id: string;
+
+    @IsString()
+  city: string;
+
+  @IsString()
   @MaxLength(100)
   profession: string;
 
-@IsOptional()
-@IsDateString({}, { message: 'date_of_birth must be a valid ISO 8601 date string' })
-date_of_birth?: Date | null;
+  @IsOptional()
+  @IsDateString(
+    {},
+    { message: 'date_of_birth must be a valid ISO 8601 date string' },
+  )
+  date_of_birth?: Date | null;
 
   @IsString()
   country: string;

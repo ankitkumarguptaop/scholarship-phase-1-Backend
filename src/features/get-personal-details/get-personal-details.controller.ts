@@ -1,14 +1,16 @@
-import { Controller, Body, Get } from '@nestjs/common';
-import { CommandBus } from '@nestjs/cqrs';
-import { CreatePersonalDetailDto } from './create-personal-details.dto';
-import { CreatePersonalDetailCommand } from './create-personal-details.command';
+import { Controller, Body, Get, Param } from '@nestjs/common';
+import { QueryBus } from '@nestjs/cqrs';
+import { GetPersonalDetailsQuery } from './get-personal-details.query';
 
-@Controller('scholarships')
-export class PersonalDetailController {
-  constructor(private readonly commandBus: CommandBus) {}
-
-  @Get("/personal-details")
-  async create(@Body() dto: CreatePersonalDetailDto) {
-    return this.commandBus.execute(new CreatePersonalDetailCommand(dto));
+@Controller('scholarships/applications')
+export class GetPersonalDetailController {
+  constructor(private readonly queryBus: QueryBus) {}
+  @Get('/:application_uuid/personal-details')
+  async getPersonalDetails(
+    @Param('application_uuid') application_uuid: string,
+  ) {
+    return await this.queryBus.execute(
+      new GetPersonalDetailsQuery(application_uuid),
+    );
   }
 }

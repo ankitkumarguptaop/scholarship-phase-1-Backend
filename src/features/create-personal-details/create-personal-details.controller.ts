@@ -7,7 +7,7 @@ import { CreatePersonalDetailCommand } from './create-personal-details.command';
 export class PersonalDetailController {
   constructor(private readonly commandBus: CommandBus) {}
 
-  @Post("/personal-details")
+  @Post("/applications/personal-details")
   async create(@Body() dto: CreatePersonalDetailDto) {
     return this.commandBus.execute(new CreatePersonalDetailCommand(dto));
   }

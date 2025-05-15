@@ -29,14 +29,22 @@ export enum FinancialDependency {
 
 @Entity('personal_information')
 export class PersonalInformation {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   @Column({
     type: 'enum',
     enum: DocumentType,
   })
   document_type: DocumentType;
+
+
+  @Column()
+  application_id: string;
+
+  @Column()
+  city: string;
+
 
   @Column({ length: 50 })
   document_number: string;
@@ -50,13 +58,13 @@ export class PersonalInformation {
   @Column({ type: 'varchar', length: 100 })
   profession: string;
 
-  @Column({ type: 'date' ,nullable: true})
+  @Column({ type: 'date', nullable: true })
   date_of_birth: Date;
 
   @Column({ type: 'varchar', length: 100 })
   country: string;
 
-  @Column({ type: 'varchar', length: 100, nullable: true }) 
+  @Column({ type: 'varchar', length: 100, nullable: true })
   province_or_state: string;
 
   @Column({ type: 'varchar', length: 100 })
