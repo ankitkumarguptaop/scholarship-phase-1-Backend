@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, TableColumn, TableForeignKey } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
 export class PersonalInformation1747242753388 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -14,7 +14,6 @@ export class PersonalInformation1747242753388 implements MigrationInterface {
           {
             name: "application_id",
             type: "uuid",
-            isNullable: false,
             isUnique: true,
           },
           {
@@ -28,54 +27,65 @@ export class PersonalInformation1747242753388 implements MigrationInterface {
               "RUC",
               "Other",
             ],
+            isNullable: true,
           },
           {
             name: "document_number",
             type: "varchar",
             length: "50",
+            isNullable: true,
           },
           {
             name: "marital_status",
             type: "enum",
             enumName: "marital_status_enum",
             enum: ["Married", "Single", "Divorced", "Widowed", "Separated"],
+            isNullable: true,
           },
           {
             name: "profession",
             type: "varchar",
             length: "255",
+            isNullable: true,
           },
           {
             name: "date_of_birth",
             type: "date",
+            isNullable: true,
           },
           {
             name: "country",
             type: "varchar",
+            isNullable: true,
           },
           {
             name: "province_or_state",
             type: "varchar",
+            isNullable: true,
           },
           {
             name: "city",
             type: "varchar",
+            isNullable: true,
           },
           {
             name: "nationality",
             type: "varchar",
+            isNullable: true,
           },
           {
             name: "monthly_income",
             type: "numeric",
             precision: 12,
             scale: 2,
+            isNullable: true,
           },
           {
             name: "monthly_expenses",
             type: "numeric",
             precision: 12,
             scale: 2,
+            isNullable: true,
           },
           {
             name: "financial_dependency",
@@ -83,11 +93,13 @@ export class PersonalInformation1747242753388 implements MigrationInterface {
             enumName: "financial_dependency_enum",
             enum: ["Yes", "No"],
             default: `'No'`,
+            isNullable: true,
           },
           {
             name: "has_children",
             type: "boolean",
             default: false,
+            isNullable: true,
           },
           {
             name: "children_0_4",
@@ -113,11 +125,13 @@ export class PersonalInformation1747242753388 implements MigrationInterface {
             name: "created_at",
             type: "timestamp",
             default: "now()",
+            isNullable: true,
           },
           {
             name: "updated_at",
             type: "timestamp",
             default: "now()",
+            isNullable: true,
           },
         ],
       }),
@@ -128,7 +142,7 @@ export class PersonalInformation1747242753388 implements MigrationInterface {
       "personal_information",
       new TableForeignKey({
         columnNames: ["application_id"],
-        referencedTableName: "scholarship_application", 
+        referencedTableName: "scholarship_application",
         referencedColumnNames: ["uuid"],
         onDelete: "CASCADE",
       })

@@ -11,6 +11,18 @@ export class CreatePersonalDetailHandler
   ) {}
 
   async execute(command: CreatePersonalDetailCommand) {
+    const personalDetails = await this.personalDetailsRepository.findOne({
+      where: {
+        application_id: command.dto.application_id,
+      },
+    });
+    if (personalDetails) {
+      return await this.personalDetailsRepository.updatePersonalDetailsByApplicationId(
+        command.dto.application_id,
+        command.dto,
+      );
+    }
+
     return await this.personalDetailsRepository.createPersonalDetails(
       command.dto,
     );

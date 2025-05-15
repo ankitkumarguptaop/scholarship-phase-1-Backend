@@ -35,68 +35,68 @@ export class PersonalInformation {
   @Column({
     type: 'enum',
     enum: DocumentType,
+    nullable: true,
   })
-  document_type: DocumentType;
+  document_type?: DocumentType;
 
+  @Column({ nullable: true })
+  application_id?: string;
 
-  @Column()
-  application_id: string;
+  @Column({ nullable: true })
+  city?: string;
 
-  @Column()
-  city: string;
-
-
-  @Column({ length: 50 })
-  document_number: string;
+  @Column({ length: 50, nullable: true })
+  document_number?: string;
 
   @Column({
     type: 'enum',
     enum: MaritalStatus,
+    nullable: true,
   })
-  marital_status: MaritalStatus;
-
-  @Column({ type: 'varchar', length: 100 })
-  profession: string;
-
-  @Column({ type: 'date', nullable: true })
-  date_of_birth: Date;
-
-  @Column({ type: 'varchar', length: 100 })
-  country: string;
+  marital_status?: MaritalStatus;
 
   @Column({ type: 'varchar', length: 100, nullable: true })
-  province_or_state: string;
+  profession?: string;
 
-  @Column({ type: 'varchar', length: 100 })
-  nationality: string;
+  @Column({ type: 'date', nullable: true })
+  date_of_birth?: Date | string;
 
-  @Column({ type: 'numeric', precision: 12, scale: 2, default: 0 })
-  monthly_income: number;
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  country?: string;
 
-  @Column({ type: 'numeric', precision: 12, scale: 2, default: 0 })
-  monthly_expenses: number;
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  province_or_state?: string;
+
+  @Column({ type: 'varchar', length: 100, nullable: true })
+  nationality?: string;
+
+  @Column({ type: 'numeric', precision: 12, scale: 2, nullable: true })
+  monthly_income?: number;
+
+  @Column({ type: 'numeric', precision: 12, scale: 2, nullable: true })
+  monthly_expenses?: number;
 
   @Column({
     type: 'enum',
     enum: FinancialDependency,
-    default: FinancialDependency.NO,
+    nullable: true,
   })
-  financial_dependency: FinancialDependency;
+  financial_dependency?: FinancialDependency;
 
-  @Column({ type: 'boolean', default: false })
-  has_children: boolean;
+  @Column({ type: 'boolean', nullable: true })
+  has_children?: boolean;
 
-  @Column({ type: 'smallint', default: 0 })
-  children_0_4: number;
+  @Column({ type: 'smallint', nullable: true })
+  children_0_4?: number;
 
-  @Column({ type: 'smallint', default: 0 })
-  children_5_12: number;
+  @Column({ type: 'smallint', nullable: true })
+  children_5_12?: number;
 
-  @Column({ type: 'smallint', default: 0 })
-  children_13_18: number;
+  @Column({ type: 'smallint', nullable: true })
+  children_13_18?: number;
 
-  @Column({ type: 'smallint', default: 0 })
-  children_above_18: number;
+  @Column({ type: 'smallint', nullable: true })
+  children_above_18?: number;
 
   @CreateDateColumn()
   created_at: Date;

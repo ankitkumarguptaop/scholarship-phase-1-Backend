@@ -16,72 +16,88 @@ import {
 } from 'src/domain/personal-details/personal-detail.entity';
 
 export class CreatePersonalDetailDto {
+  @IsOptional()
   @IsEnum(DocumentType)
-  document_type: DocumentType;
+  document_type?: DocumentType | null;
 
+  @IsOptional()
   @IsString()
   @MaxLength(50)
-  document_number: string;
+  document_number?: string | null;
 
+  @IsOptional()
   @IsEnum(MaritalStatus)
-  marital_status: MaritalStatus;
+  marital_status?: MaritalStatus | null;
 
+  @IsOptional()
   @IsString()
-  application_id: string;
+  application_id?: string | null;
 
-    @IsString()
-  city: string;
+  @IsOptional()
+  @IsString()
+  city?: string | null;
 
+  @IsOptional()
   @IsString()
   @MaxLength(100)
-  profession: string;
+  profession?: string | null;
 
   @IsOptional()
   @IsDateString(
     {},
     { message: 'date_of_birth must be a valid ISO 8601 date string' },
   )
-  date_of_birth?: Date | null;
-
-  @IsString()
-  country: string;
+  date_of_birth?: string | null;
 
   @IsOptional()
   @IsString()
-  province_or_state?: string;
+  country?: string | null;
 
+  @IsOptional()
   @IsString()
-  nationality: string;
+  province_or_state?: string | null;
 
+  @IsOptional()
+  @IsString()
+  nationality?: string | null;
+
+  @IsOptional()
   @IsNumber()
-  monthly_income: number;
+  monthly_income?: number | null;
 
+  @IsOptional()
   @IsNumber()
-  monthly_expenses: number;
+  monthly_expenses?: number | null;
 
+  @IsOptional()
   @IsEnum(FinancialDependency)
-  financial_dependency: FinancialDependency;
+  financial_dependency?: FinancialDependency | null;
 
+  @IsOptional()
   @IsBoolean()
-  has_children: boolean;
+  has_children?: boolean | null;
 
+  @IsOptional()
   @IsNumber()
   @Min(0)
   @Max(99)
-  children_0_4: number;
+  children_0_4?: number | null;
 
+  @IsOptional()
   @IsNumber()
   @Min(0)
   @Max(99)
-  children_5_12: number;
+  children_5_12?: number | null;
 
+  @IsOptional()
   @IsNumber()
   @Min(0)
   @Max(99)
-  children_13_18: number;
+  children_13_18?: number | null;
 
+  @IsOptional()
   @IsNumber()
   @Min(0)
   @Max(99)
-  children_above_18: number;
+  children_above_18?: number | null;
 }

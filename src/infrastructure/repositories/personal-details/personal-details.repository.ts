@@ -18,5 +18,17 @@ export class PersonalDetailsRepository extends Repository<PersonalInformation> {
     return this.save(details);
   }
 
- 
+async updatePersonalDetailsByApplicationId(
+  applicationId: string,
+  details: Partial<PersonalInformation>,
+): Promise<PersonalInformation> {
+  const existing = await this.findOneBy({ application_id: applicationId });
+  if (!existing) {
+    throw new Error(`PersonalInformation with application_id ${applicationId} not found`);
+  }
+
+  const updated = Object.assign(existing, details);
+  return this.save(updated);
+}
+
 }
