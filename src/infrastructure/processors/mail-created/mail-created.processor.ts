@@ -21,7 +21,7 @@ export class SendMailAccessTokenProcessor {
   async handleEvent(payload: EventPayload<MailCreatedBody>) {
     const { email, access_token } = payload.body.mail;
 
-    const command = new SendMailCommand( access_token ,email);
+    const command = new SendMailCommand(access_token, email);
 
     await this.handler.handle(command);
 

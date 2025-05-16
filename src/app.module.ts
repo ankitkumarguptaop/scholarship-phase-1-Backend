@@ -1,8 +1,4 @@
-import {
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-} from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -14,6 +10,7 @@ import { VerifyTokenModule } from './features/verify-token/verify-token.module';
 import { CreateScholarShipApplicationModule } from './features/create-scholarship-application/create-scholarship-application.module';
 import { CreatePersonalDetailModule } from './features/create-personal-details/create-personal-details.module';
 import { GetPersonalDetailModule } from './features/get-personal-details/get-personal-details.module';
+import { ChanngeApplicationStatusModule } from './features/change-application-status/change-application-status.module';
 
 @Module({
   imports: [
@@ -29,7 +26,8 @@ import { GetPersonalDetailModule } from './features/get-personal-details/get-per
     RabbitmqModule,
     CreateScholarShipApplicationModule,
     CreatePersonalDetailModule,
-    GetPersonalDetailModule
+    GetPersonalDetailModule,
+    ChanngeApplicationStatusModule,
   ],
   controllers: [AppController],
   providers: [AppService],

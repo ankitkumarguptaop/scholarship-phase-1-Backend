@@ -70,7 +70,7 @@ export class PersonalInformation {
   @Column({ type: 'varchar', length: 100, nullable: true })
   nationality?: string;
 
-  @Column({ type: 'varchar',  nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   monthly_income?: string;
 
   @Column({ type: 'varchar', nullable: true })
@@ -86,17 +86,17 @@ export class PersonalInformation {
   @Column({ type: 'boolean', nullable: true })
   has_children?: boolean;
 
-  @Column({ type: 'smallint', nullable: true })
-  children_0_4?: number;
+  @Column({ type: 'varchar', nullable: true })
+  children_0_4?: string;
 
-  @Column({ type: 'smallint', nullable: true })
-  children_5_12?: number;
+  @Column({ type: 'varchar', nullable: true })
+  children_5_12?: string;
 
-  @Column({ type: 'smallint', nullable: true })
-  children_13_18?: number;
+  @Column({ type: 'varchar', nullable: true })
+  children_13_18?: string;
 
-  @Column({ type: 'smallint', nullable: true })
-  children_above_18?: number;
+  @Column({ type: 'varchar', nullable: true })
+  children_above_18?: string;
 
   @CreateDateColumn()
   created_at: Date;

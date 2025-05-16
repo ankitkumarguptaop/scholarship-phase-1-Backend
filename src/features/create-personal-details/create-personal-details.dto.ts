@@ -8,6 +8,7 @@ import {
   IsBoolean,
   Min,
   Max,
+  Matches,
 } from 'class-validator';
 import {
   DocumentType,
@@ -78,26 +79,26 @@ export class CreatePersonalDetailDto {
   has_children?: boolean | null;
 
   @IsOptional()
-  @IsNumber()
-  @Min(0)
-  @Max(99)
-  children_0_4?: number | null;
+  @Matches(/^(0|[1-9][0-9]?)$/, {
+    message: 'Must be a number between 0 and 99',
+  })
+  children_0_4?: string | null;
 
   @IsOptional()
-  @IsNumber()
-  @Min(0)
-  @Max(99)
-  children_5_12?: number | null;
+  @Matches(/^(0|[1-9][0-9]?)$/, {
+    message: 'Must be a number between 0 and 99',
+  })
+  children_5_12?: string | null;
 
   @IsOptional()
-  @IsNumber()
-  @Min(0)
-  @Max(99)
-  children_13_18?: number | null;
+  @Matches(/^(0|[1-9][0-9]?)$/, {
+    message: 'Must be a number between 0 and 99',
+  })
+  children_13_18?: string | null;
 
   @IsOptional()
-  @IsNumber()
-  @Min(0)
-  @Max(99)
-  children_above_18?: number | null;
+  @Matches(/^(0|[1-9][0-9]?)$/, {
+    message: 'Must be a number between 0 and 99',
+  })
+  children_above_18?: string | null;
 }

@@ -30,5 +30,4 @@ async updatePersonalDetailsByApplicationId(
   const updated = Object.assign(existing, details);
   return this.save(updated);
 }
-
 }

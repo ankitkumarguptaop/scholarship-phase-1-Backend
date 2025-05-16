@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { ScholarshipApplicationStatus } from './enums';
 
 @Entity()
 export class ScholarshipApplication {
@@ -24,6 +25,12 @@ export class ScholarshipApplication {
 
   @Column()
   email: string;
+
+  @Column({
+    type: 'enum',
+    enum: ScholarshipApplicationStatus,
+  })
+  status: ScholarshipApplicationStatus;
 
   @UpdateDateColumn({ type: 'timestamp' })
   updated_at: Date;

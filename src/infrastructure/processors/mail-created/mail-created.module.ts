@@ -14,6 +14,4 @@ import { SendMailAccessTokenProcessor } from './mail-created.processor';
   ],
   exports: [SendMailAccessTokenProcessor],
 })
-
-
 export class SendMailAccessTokenModule {}

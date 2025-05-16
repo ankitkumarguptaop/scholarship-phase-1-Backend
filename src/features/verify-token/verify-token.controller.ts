@@ -8,7 +8,6 @@ export class VerifyTokenController {
 
   @Post('/applicants/login')
   async verifyToken(@Body() body: { access_token: string }) {
-    console.log('✌️access_token --->', body.access_token);
     return await this.queryBus.execute(new VerifyTokenQuery(body.access_token));
   }
 }

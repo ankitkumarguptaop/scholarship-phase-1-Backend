@@ -99,22 +99,22 @@ export class PersonalInformation1747242753388 implements MigrationInterface {
           },
           {
             name: "children_0_4",
-            type: "smallint",
+            type: "varchar",
             isNullable: true,
           },
           {
             name: "children_5_12",
-            type: "smallint",
+            type: "varchar",
             isNullable: true,
           },
           {
             name: "children_13_18",
-            type: "smallint",
+            type: "varchar",
             isNullable: true,
           },
           {
             name: "children_above_18",
-            type: "smallint",
+            type: "varchar",
             isNullable: true,
           },
           {

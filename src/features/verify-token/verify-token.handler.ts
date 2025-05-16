@@ -8,7 +8,6 @@ export class VerifyTokenHandler implements IQueryHandler<VerifyTokenQuery> {
   constructor(  private readonly ScholarshipApplicationRepository: ScholarshipApplicationRepository) {}
 
   async execute(query: VerifyTokenQuery) {
-   console.log('✌️query --->', query);
 
     const application = await this.ScholarshipApplicationRepository.findOne({
       where: {

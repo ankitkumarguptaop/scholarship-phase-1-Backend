@@ -1,3 +1,3 @@
 export class GetPersonalDetailsQuery {
-    constructor(public readonly application_uuid:string) {}
+  constructor(public readonly application_uuid: string) {}
 }

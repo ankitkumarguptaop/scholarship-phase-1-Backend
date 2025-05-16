@@ -1,4 +1,11 @@
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+import { ScholarshipApplicationStatus } from 'src/domain/scholarship-application/enums';
 
 export class CreateScholarshipApplicationDto {
   uuid: string;
@@ -16,4 +23,8 @@ export class CreateScholarshipApplicationDto {
   @IsNotEmpty()
   @IsEmail()
   email: string;
+
+  @IsOptional()
+  @IsEnum(ScholarshipApplicationStatus)
+  status?: ScholarshipApplicationStatus;
 }

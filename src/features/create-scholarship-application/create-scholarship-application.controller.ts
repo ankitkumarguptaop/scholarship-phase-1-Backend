@@ -10,7 +10,11 @@ export class CreateScholarshipApplicationController {
   constructor(private readonly commandBus: CommandBus) {}
 
   @Post('/applications')
-  signup(@Body() createScholarshipApplication: CreateScholarshipApplicationDto) {
-    return this.commandBus.execute(new CreateScholarshipApplicationCommand(createScholarshipApplication));
+  signup(
+    @Body() createScholarshipApplication: CreateScholarshipApplicationDto,
+  ) {
+    return this.commandBus.execute(
+      new CreateScholarshipApplicationCommand(createScholarshipApplication),
+    );
   }
 }
