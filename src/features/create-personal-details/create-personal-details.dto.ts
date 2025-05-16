@@ -62,12 +62,12 @@ export class CreatePersonalDetailDto {
   nationality?: string | null;
 
   @IsOptional()
-  @IsNumber()
-  monthly_income?: number | null;
+  @IsString()
+  monthly_income?: string | null;
 
   @IsOptional()
-  @IsNumber()
-  monthly_expenses?: number | null;
+  @IsString()
+  monthly_expenses?: string | null;
 
   @IsOptional()
   @IsEnum(FinancialDependency)

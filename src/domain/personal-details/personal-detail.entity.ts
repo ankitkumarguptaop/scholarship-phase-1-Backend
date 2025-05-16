@@ -70,11 +70,11 @@ export class PersonalInformation {
   @Column({ type: 'varchar', length: 100, nullable: true })
   nationality?: string;
 
-  @Column({ type: 'numeric', precision: 12, scale: 2, nullable: true })
-  monthly_income?: number;
+  @Column({ type: 'varchar',  nullable: true })
+  monthly_income?: string;
 
-  @Column({ type: 'numeric', precision: 12, scale: 2, nullable: true })
-  monthly_expenses?: number;
+  @Column({ type: 'varchar', nullable: true })
+  monthly_expenses?: string;
 
   @Column({
     type: 'enum',

@@ -75,16 +75,12 @@ export class PersonalInformation1747242753388 implements MigrationInterface {
           },
           {
             name: "monthly_income",
-            type: "numeric",
-            precision: 12,
-            scale: 2,
+            type: "varchar",
             isNullable: true,
           },
           {
             name: "monthly_expenses",
-            type: "numeric",
-            precision: 12,
-            scale: 2,
+            type: "varchar",
             isNullable: true,
           },
           {
