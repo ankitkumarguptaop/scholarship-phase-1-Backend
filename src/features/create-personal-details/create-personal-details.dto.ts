@@ -9,6 +9,7 @@ import {
   Min,
   Max,
   Matches,
+  ValidateIf,
 } from 'class-validator';
 import {
   DocumentType,
@@ -79,26 +80,30 @@ export class CreatePersonalDetailDto {
   has_children?: boolean | null;
 
   @IsOptional()
-  @Matches(/^(0|[1-9][0-9]?)$/, {
-    message: 'Must be a number between 0 and 99',
+  @ValidateIf((_, value) => value === null || value === '' || typeof value === 'string')
+  @Matches(/^$|^(0|[1-9][0-9]?)$/, {
+    message: 'Must be a number between 0 and 99 or empty',
   })
   children_0_4?: string | null;
 
   @IsOptional()
-  @Matches(/^(0|[1-9][0-9]?)$/, {
-    message: 'Must be a number between 0 and 99',
+  @ValidateIf((_, value) => value === null || value === '' || typeof value === 'string')
+  @Matches(/^$|^(0|[1-9][0-9]?)$/, {
+    message: 'Must be a number between 0 and 99 or empty',
   })
   children_5_12?: string | null;
 
   @IsOptional()
-  @Matches(/^(0|[1-9][0-9]?)$/, {
-    message: 'Must be a number between 0 and 99',
+  @ValidateIf((_, value) => value === null || value === '' || typeof value === 'string')
+  @Matches(/^$|^(0|[1-9][0-9]?)$/, {
+    message: 'Must be a number between 0 and 99 or empty',
   })
   children_13_18?: string | null;
 
   @IsOptional()
-  @Matches(/^(0|[1-9][0-9]?)$/, {
-    message: 'Must be a number between 0 and 99',
+  @ValidateIf((_, value) => value === null || value === '' || typeof value === 'string')
+  @Matches(/^$|^(0|[1-9][0-9]?)$/, {
+    message: 'Must be a number between 0 and 99 or empty',
   })
   children_above_18?: string | null;
 }
