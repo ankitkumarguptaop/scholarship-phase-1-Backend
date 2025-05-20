@@ -48,48 +48,4 @@ components:
             type: string
             format: date-time
             description: Date when the event was fired
-          application_created:
-            $ref: '#/components/schemas/ApplicationCreatedRequestPayload'
-
-  schemas:
-    ApplicationCreatedRequestPayload:
-      title: The Application Created Object
-      type: object
-      description: >-
-        The application created object holds all the data related to the scholarship application
-      properties:
-        id:
-          type: number
-          description: ID of the application
-          example: 1
-        uuid:
-          type: string
-          format: uuid
-          description: Unique UUID for the application
-        status:
-          type: string
-          enum:
-            - PENDING
-            - IN_PROCESS
-            - FINISHED
-          description: Current status of the application
-        advisor_uuid:
-          type: string
-          format: uuid
-          description: UUID of the assigned advisor
-        token:
-          type: string
-          description: Unique token associated with the application
-        created_at:
-          type: string
-          description: The date when the application was created
-          format: date-time
-        updated_at:
-          type: string
-          description: The date when the application was last updated
-          format: date-time
-        deleted_at:
-          type: string
-          description: The date when the application was deleted, if applicable
-          format: date-time
-          example: null
+          
