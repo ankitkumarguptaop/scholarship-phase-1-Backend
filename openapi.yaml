@@ -1,0 +1,107 @@
+openapi: 3.0.0
+info:
+  title: Scholarship Application API
+  description: API for managing scholarship applications
+  version: 1.0.0
+
+paths:
+  /scholarships/applications:
+    post:
+      summary: Create a new scholarship application
+      operationId: createApplication
+      tags:
+        - Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateApplicationRequest'
+      responses:
+        '201':
+          description: Application created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationResponse'
+        '400':
+          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal server error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+
+components:
+  schemas:
+    CreateApplicationRequest:
+      type: object
+      required:
+        - advisor_uuid
+        - applicant_uuid
+        - email
+      properties:
+        advisor_uuid:
+          type: string
+          format: uuid
+          description: UUID of the assigned advisor
+        applicant_uuid:
+          type: string
+          format: uuid
+          description: UUID of the applicant
+        email:
+          type: string
+          format: email
+          description: Email address of the applicant
+
+    ApplicationResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Internal numeric ID of the application
+        token:
+          type: string
+          description: Unique token associated with the application
+        uuid:
+          type: string
+          format: uuid
+          description: Public identifier of the application
+        advisor_uuid:
+          type: string
+          format: uuid
+          description: UUID of the assigned advisor
+        applicant_uuid:
+          type: string
+          format: uuid
+          description: UUID of the applicant
+
+    ProblemDetails:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Short, human-readable summary of the error
+        detail:
+          type: string
+          description: Detailed description of the error
+        status:
+          type: integer
+          description: HTTP status code
+        invalid_params:
+          type: array
+          description: List of invalid parameters
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Name of the invalid parameter
+              message:
+                type: string
+                description: Validation error message

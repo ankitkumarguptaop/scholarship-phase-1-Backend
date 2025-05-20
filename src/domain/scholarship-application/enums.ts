@@ -1,5 +1,5 @@
 export enum ScholarshipApplicationStatus {
   COMPLETED = 'COMPLETED',
-  ONGOING = 'ONGOING',
-  NOTSTARTED = 'NOTSTARTED',
+  IN_PROCESS = 'IN_PROCESS',
+  PENDING = 'PENDING',
 }

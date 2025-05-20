@@ -12,7 +12,7 @@ export const dataSourceOptions = (
   configService: ConfigService,
 ): DataSourceOptions & SeederOptions => ({
   type: 'postgres',
-  host: 'localhost',
+  host: 'database',
   port: configService.get<number>('DB_PORT'),
   username: configService.get<string>('DB_USER'),
   password: configService.get<string>('DB_PASSWORD'),

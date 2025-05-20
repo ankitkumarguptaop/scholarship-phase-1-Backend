@@ -1,0 +1,95 @@
+asyncapi: 3.0.0
+info:
+  title: Application Service
+  version: '1.0'
+  description: Application Handling Service
+  contact:
+    name: Quality and Reports
+    email: reporteria.universitaria@funiber.org
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+
+channels:
+  scholarship.application-service.application-created:
+    address: scholarship.application-service.application-created
+    messages:
+      ApplicationCreated.message:
+        $ref: '#/components/messages/ApplicationCreatedRequest'
+
+operations:
+  ApplicationCreated:
+    action: receive
+    channel:
+      $ref: '#/channels/scholarship.application-service.application-created'
+    summary: Notify that a new application has been created
+    description: Event triggered when a new scholarship application is created
+    messages:
+      - $ref: >-
+          #/channels/scholarship.application-service.application-created/messages/ApplicationCreated.message
+
+components:
+  messages:
+    ApplicationCreatedRequest:
+      name: ApplicationCreated
+      title: Application Created Event
+      contentType: application/json
+      summary: send email that a new scholarship application has been created with token
+      payload:
+        type: object
+        description: >-
+          The Application Created Payload object holds all the data related
+          to the application details
+        properties:
+          uuid:
+            type: string
+            description: Unique ID for the event
+          fired_at:
+            type: string
+            format: date-time
+            description: Date when the event was fired
+          application_created:
+            $ref: '#/components/schemas/ApplicationCreatedRequestPayload'
+
+  schemas:
+    ApplicationCreatedRequestPayload:
+      title: The Application Created Object
+      type: object
+      description: >-
+        The application created object holds all the data related to the scholarship application
+      properties:
+        id:
+          type: number
+          description: ID of the application
+          example: 1
+        uuid:
+          type: string
+          format: uuid
+          description: Unique UUID for the application
+        status:
+          type: string
+          enum:
+            - PENDING
+            - IN_PROCESS
+            - FINISHED
+          description: Current status of the application
+        advisor_uuid:
+          type: string
+          format: uuid
+          description: UUID of the assigned advisor
+        token:
+          type: string
+          description: Unique token associated with the application
+        created_at:
+          type: string
+          description: The date when the application was created
+          format: date-time
+        updated_at:
+          type: string
+          description: The date when the application was last updated
+          format: date-time
+        deleted_at:
+          type: string
+          description: The date when the application was deleted, if applicable
+          format: date-time
+          example: null

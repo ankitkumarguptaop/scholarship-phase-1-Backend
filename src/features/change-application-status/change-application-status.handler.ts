@@ -23,8 +23,15 @@ export class ChanngeApplicationStatusHandler
       throw new NotFound('application not found to update status ');
     }
 
-    return await this.ScholarshipApplicationRepository.updateStatus(
+    const isUpdatedStatus = this.ScholarshipApplicationRepository.updateStatus(
       command.data,
     );
+
+    if (!isUpdatedStatus) {
+      throw new NotFound('application not found to update status ');
+    }
+    return {
+      message: 'token updated sucessfully',
+    };
   }
 }

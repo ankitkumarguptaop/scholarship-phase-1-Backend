@@ -4,7 +4,7 @@ export class ScholarshipApplication1747204572311 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-      CREATE TYPE scholarship_application_status_enum AS ENUM ('COMPLETED', 'ONGOING', 'NOTSTARTED')
+      CREATE TYPE scholarship_application_status_enum AS ENUM ('COMPLETED', 'PENDING', 'IN_PROCESS')
     `);
 
     await queryRunner.createTable(
@@ -47,7 +47,7 @@ export class ScholarshipApplication1747204572311 implements MigrationInterface {
             name: 'status',
             type: 'scholarship_application_status_enum',
             isNullable: false,
-            default: `'NOTSTARTED'`,
+            default: `'PENDING'`,
           },
           {
             name: 'updated_at',

@@ -19,7 +19,9 @@ export class VerifyTokenHandler implements IQueryHandler<VerifyTokenQuery> {
       throw new NotFound('token is invalid');
     }
 
-    console.log("kjhdsfuiheihfshfvuuiuhuhhuuh" , application);
-    return application;
+    return {
+      ...application,
+      message: 'token is valid',
+    };
   }
 }

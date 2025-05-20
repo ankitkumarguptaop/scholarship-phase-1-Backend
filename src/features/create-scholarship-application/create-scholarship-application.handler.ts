@@ -30,7 +30,7 @@ export class CreateScholarshipApplicationHandler
       throw new ScholarshipApplicationAlreadyExistsConflict();
     }
 
-    const accessToken = randomBytes(32).toString('hex');
+    const accessToken = randomBytes(6).toString('hex');
     const application_uuid = uuidv4();
 
     const userWithToken = {
