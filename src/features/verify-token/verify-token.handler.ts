@@ -9,7 +9,8 @@ export class VerifyTokenHandler implements IQueryHandler<VerifyTokenQuery> {
 
   async execute(query: VerifyTokenQuery) {
 
-    const application = await this.ScholarshipApplicationRepository.findOne({
+    const application = await this.ScholarshipApplicationRepository.findOne({ 
+      relations:['applicant'],
       where: {
         token: query.access_token,
       },

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ScholarshipApplication } from 'src/domain/scholarship-application/scholarship-application.entity';
 import { UpdateScholarshipApplicationStatusDto } from 'src/features/change-application-status/change-application-status.dto';
+import { CreateScholarshipApplicationDto } from 'src/features/create-scholarship-application/create-scholarship-application.dto';
 import { DataSource, Repository } from 'typeorm';
 
 @Injectable()
@@ -14,7 +15,7 @@ export class ScholarshipApplicationRepository extends Repository<ScholarshipAppl
   }
 
   createApplication(
-    application: Partial<ScholarshipApplication>,
+    application: CreateScholarshipApplicationDto,
   ): Promise<ScholarshipApplication> {
     return this.save(application);
   }

@@ -4,8 +4,12 @@ import {
   IsNotEmpty,
   IsOptional,
   IsString,
+  IsUUID,
 } from 'class-validator';
-import { ScholarshipApplicationStatus } from 'src/domain/scholarship-application/enums';
+import {
+  ScholarshipApplicationNotificationLanguage,
+  ScholarshipApplicationStatus,
+} from 'src/domain/scholarship-application/enums';
 
 export class CreateScholarshipApplicationDto {
   uuid: string;
@@ -15,16 +19,27 @@ export class CreateScholarshipApplicationDto {
   applicant_uuid: string;
 
   @IsNotEmpty()
-  @IsString()
+  @IsUUID()
   advisor_uuid: string;
 
   token: string;
 
-  @IsNotEmpty()
-  @IsEmail()
-  email: string;
-
   @IsOptional()
   @IsEnum(ScholarshipApplicationStatus)
   status?: ScholarshipApplicationStatus;
+
+  @IsOptional()
+  @IsEnum(ScholarshipApplicationNotificationLanguage)
+  notification_language: ScholarshipApplicationNotificationLanguage;
+
+  @IsNotEmpty()
+  @IsUUID()
+  program_uuid: string;
+
+
+  @IsNotEmpty()
+  @IsUUID()
+  information_request_uuid: string;
+
+  
 }

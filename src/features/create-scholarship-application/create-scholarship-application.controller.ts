@@ -4,11 +4,11 @@ import { CommandBus } from '@nestjs/cqrs';
 import { CreateScholarshipApplicationDto } from './create-scholarship-application.dto';
 import { CreateScholarshipApplicationCommand } from './create-scholarship-application.command';
 
-@Controller('scholarships')
+@Controller('scholarship-appications')
 export class CreateScholarshipApplicationController {
   constructor(private readonly commandBus: CommandBus) {}
 
-  @Post('/applications')
+  @Post()
   signup(
     @Body() createScholarshipApplication: CreateScholarshipApplicationDto,
   ) {

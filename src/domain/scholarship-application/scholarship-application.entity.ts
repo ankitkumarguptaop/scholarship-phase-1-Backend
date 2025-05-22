@@ -1,10 +1,16 @@
 import {
   Column,
   Entity,
+  JoinColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ScholarshipApplicationStatus } from './enums';
+import {
+  ScholarshipApplicationNotificationLanguage,
+  ScholarshipApplicationStatus,
+} from './enums';
+import { Applicant } from '../applicant/applicant.entity';
 
 @Entity()
 export class ScholarshipApplication {
@@ -14,17 +20,14 @@ export class ScholarshipApplication {
   @Column()
   uuid: string;
 
-  @Column()
+  @Column({ type: 'uuid' })
   applicant_uuid: string;
 
-  @Column()
+  @Column({ type: 'uuid' })
   advisor_uuid: string;
 
   @Column()
   token: string;
-
-  @Column()
-  email: string;
 
   @Column({
     type: 'enum',
@@ -32,6 +35,16 @@ export class ScholarshipApplication {
   })
   status: ScholarshipApplicationStatus;
 
-  @UpdateDateColumn({ type: 'timestamp' })
-  updated_at: Date;
+  @Column({ type: 'uuid' })
+  information_request_uuid: string;
+
+  @Column({ type: 'uuid' })
+  program_uuid: string;
+
+  @Column({ type: 'enum', enum: ScholarshipApplicationNotificationLanguage })
+  notification_language: ScholarshipApplicationNotificationLanguage;
+
+  @OneToOne(() => Applicant )
+  @JoinColumn({ name: 'applicant_uuid', referencedColumnName: 'uuid' })
+  applicant: Applicant;
 }

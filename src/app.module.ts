@@ -11,6 +11,9 @@ import { CreateScholarShipApplicationModule } from './features/create-scholarshi
 import { CreatePersonalDetailModule } from './features/create-personal-details/create-personal-details.module';
 import { GetPersonalDetailModule } from './features/get-personal-details/get-personal-details.module';
 import { ChanngeApplicationStatusModule } from './features/change-application-status/change-application-status.module';
+import { CreateApplicantModule } from './features/create-applicant/create-applicant.module';
+import { CreateAddressDetailModule } from './features/create-address-details/create-address-details.module';
+import { GetAddressDetailModule } from './features/get-address-details/get-address-details.module';
 
 @Module({
   imports: [
@@ -28,6 +31,9 @@ import { ChanngeApplicationStatusModule } from './features/change-application-st
     CreatePersonalDetailModule,
     GetPersonalDetailModule,
     ChanngeApplicationStatusModule,
+    CreateApplicantModule,
+    CreateAddressDetailModule,
+    GetAddressDetailModule
   ],
   controllers: [AppController],
   providers: [AppService],

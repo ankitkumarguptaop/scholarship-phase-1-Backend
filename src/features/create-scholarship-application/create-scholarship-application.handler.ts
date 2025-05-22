@@ -30,7 +30,7 @@ export class CreateScholarshipApplicationHandler
       throw new ScholarshipApplicationAlreadyExistsConflict();
     }
 
-    const accessToken = randomBytes(6).toString('hex');
+    const accessToken = randomBytes(10).toString('hex');
     const application_uuid = uuidv4();
 
     const userWithToken = {
@@ -44,9 +44,17 @@ export class CreateScholarshipApplicationHandler
         userWithToken,
       );
 
+    const allApplicationDate =
+      await this.ScholarshipApplicationRepository.findOne({
+        relations: ['applicant'],
+        where: {
+          applicant_uuid: createScholarshipApplicationDto.applicant_uuid,
+        },
+      });
+
     await this.outboxMessageRepository.storeOutboxMessage(
       new EmailSendSucessfully({
-        email: application.email,
+        email: allApplicationDate.applicant.email,
         access_token: application.token,
         arrived_at: new Date(),
       }),

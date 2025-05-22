@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
 export class ScholarshipApplication1747204572311 implements MigrationInterface {
 
@@ -6,7 +6,9 @@ export class ScholarshipApplication1747204572311 implements MigrationInterface {
     await queryRunner.query(`
       CREATE TYPE scholarship_application_status_enum AS ENUM ('COMPLETED', 'PENDING', 'IN_PROCESS')
     `);
-
+    await queryRunner.query(`
+      CREATE TYPE notification_language_enum AS ENUM ('es_ES', 'es_PR' , 'pt_PT','pt_BR', 'fr_FR', 'en_US', 'it_IT')
+    `);
     await queryRunner.createTable(
       new Table({
         name: 'scholarship_application',
@@ -15,6 +17,8 @@ export class ScholarshipApplication1747204572311 implements MigrationInterface {
             name: 'id',
             type: 'serial',
             isPrimary: true,
+            isUnique: true,
+
           },
           {
             name: 'uuid',
@@ -34,13 +38,23 @@ export class ScholarshipApplication1747204572311 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: 'information_request_uuid',
+            type: 'uuid',
+            isNullable: false,
+          },
+          {
             name: 'advisor_uuid',
             type: 'uuid',
             isNullable: false,
           },
           {
-            name: 'email',
-            type: 'varchar',
+            name: 'program_uuid',
+            type: 'uuid',
+            isNullable: false,
+          },
+          {
+            name: 'notification_language',
+            type: 'notification_language_enum',
             isNullable: false,
           },
           {
@@ -49,19 +63,23 @@ export class ScholarshipApplication1747204572311 implements MigrationInterface {
             isNullable: false,
             default: `'PENDING'`,
           },
-          {
-            name: 'updated_at',
-            type: 'TIMESTAMP',
-            default: 'now()',
-            isNullable: false,
-          },
         ],
       }),
     );
+      await queryRunner.createForeignKey(
+          "scholarship_application",
+          new TableForeignKey({
+            columnNames: ["applicant_uuid"],
+            referencedTableName: "applicant",
+            referencedColumnNames: ["uuid"],
+            onDelete: "CASCADE",
+          })
+        );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable('scholarship_application');
     await queryRunner.query(`DROP TYPE scholarship_application_status_enum`);
+    await queryRunner.query(`DROP TYPE notification_language_enum`);
   }
 }
