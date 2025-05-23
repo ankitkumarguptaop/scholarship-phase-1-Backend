@@ -42,11 +42,18 @@ class PhoneNumber {
   type?: PhoneNumberTypeEnum;
 }
 
+
+class Email {
+  @IsEmail()
+  email?: string;
+
+}
+
 export class CreateAddressDetailDto {
   @IsOptional()
   @IsEmail({}, { each: true })
   @MaxLength(50, { each: true })
-  emails?: string[];
+  emails?: Email[];
 
   @IsOptional()
   @IsArray()
