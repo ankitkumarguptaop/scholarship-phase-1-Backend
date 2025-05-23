@@ -3,11 +3,8 @@ import {
   IsOptional,
   IsString,
   MaxLength,
-  IsNumber,
   IsDateString,
   IsBoolean,
-  Min,
-  Max,
   Matches,
   ValidateIf,
 } from 'class-validator';

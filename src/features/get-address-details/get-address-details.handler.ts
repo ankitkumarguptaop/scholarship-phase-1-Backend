@@ -17,7 +17,6 @@ export class GetAddressDetailsHandler
         scholarship_application_id: query.id,
       },
     });
-
     if (!AddressDetails) {
       throw new NotFound('Address details not found');
     }

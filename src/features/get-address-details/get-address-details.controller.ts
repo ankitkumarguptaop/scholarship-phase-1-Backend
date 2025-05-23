@@ -9,6 +9,7 @@ export class GetAddressDetailController {
   async getAddressDetails(
     @Param('id') id: number,
   ) {
+
     return await this.queryBus.execute(
       new GetAddressDetailsQuery(id),
     );
